@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="teste.css">
+<title>Restaurante Italiano</title>
+</head>
+<body>
+<header>
+<h1>Restaurante Italiano</h1>
+<p>Uma autêntica experiência italiana</p>
+</header>
+<nav>
+<ul>
+<li><a href="#menu">Cardápio</a></li>
+<li><a href="#chef">Perfil do Chef</a></li>
+<li><a href="#reservation">Reservas</a></li>
+<li><a href="#gallery">Galeria</a></li>
+<li><a href="#contact">Fale Conosco</a></li>
+<li><a href="#delivery">Pedidos Online/Entrega</a></li>
+<li><a href="#social">Redes Sociais</a></li>
+</ul>
+</nav>
+<section id="menu">
+<h2>Cardápio</h2>
+<div class="menu-category">
+<h3>Entradas</h3>
+<ul>
+<li>Bruschetta</li>
+<li>Antipasto Misto</li>
+<li>Calamari Fritti</li>
+</ul>
+</div>
+<div class="menu-category">
+<h3>Pratos Principais</h3>
+<ul>
+<li>Spaghetti Carbonara</li>
+<li>Pizza Margherita</li>
+<li>Ossobuco alla Milanese</li>
+</ul>
+</div>
+<div class="menu-category">
+<h3>Sobremesas</h3>
+<ul>
+<li>Tiramisu</li>
+<li>Panna Cotta</li>
+<li>Cannoli Siciliani</li>
+</ul>
+</div>
+<div class="menu-category">
+<h3>Bebidas</h3>
+<ul>
+<li>Vinhos Italianos</li>
+<li>Limone Spritz</li>
+<li>Café Espresso</li>
+</ul>
+</div>
+</section>
+<section id="chef">
+<h2>Perfil do Chef</h2>
+<p>Nosso chef,Soma Yukihira, é um mestre em culinária com mais de 20 anos de experiência. Ele se formou na renomada Escola de Culinária e trabalhou em restaurantes estrelados na Itália. Suas conquistas incluem prêmios por sua habilidade em criar pratos autênticos e deliciosos.</p>
+<img src="https://i.pinimg.com/originals/ab/bb/44/abbb44bd8f13d2901e49db3e6166f7a9.jpg"class='cheff'>
+</section>
+<section id="reservation">
+<h2>Reservas/Reservas</h2>
+<p>Reserve uma mesa no Ristorante Italiano para desfrutar de uma experiência gastronômica única. Preencha o formulário abaixo:</p>
+<form action="process_reservation.php" method="post">
+<label for="date">Data:</label>
+<input type="date" id="date" name="date" required>
+<label for="time">Horário:</label>
+<input type="time" id="time" name="time" required>
+<label for="group-size">Tamanho do Grupo:</label>
+<input type="number" id="group-size" name="group-size" required>
+<label for="contact-details">Detalhes de Contato:</label>
+<textarea id="contact-details" name="contact-details" required></textarea>
+<input type="submit" value="Reservar Mesa">
+</form>
+<p>Política de Reservas: Aceitamos reservas até 24 horas antes do horário desejado. Você receberá uma confirmação por e-mail.</p>
+</section>
+<section id="gallery">
+<h2>Galeria de Fotos</h2>
+<h4>alguns dos nossos melhores pratos</h4>
+<div class="gallery">
+<img src="https://static.wixstatic.com/media/34f2ba_2859fdde1adb4266b98cbfdf88342d24~mv2.jpg/v1/fill/w_232,h_232,usm_1.20_1.00_0.01/file.webp" alt="Gamberi di Provenza al Limone">
+<img src="https://static.wixstatic.com/media/34f2ba_cb8d0319da864a1bb52af06e64f402e2~mv2.jpg/v1/fill/w_232,h_232,usm_1.20_1.00_0.01/file.webp" alt="Polpetone e Pasta Artegianale Al Burro ( Para 2 pessoas)">
+<img src="https://static.wixstatic.com/media/34f2ba_8cc8b3d9839542029e591dd8dc3cd3ca~mv2.jpg/v1/fill/w_232,h_232,usm_1.20_1.00_0.01/file.webp" alt="Risotto di Manzo">
+</div>
+</section>
+<section id="contact">
+<h2>Fale Conosco</h2>
+<p>Entre em contato conosco:</p>
+<ul>
+<li><strong>Endereço:</strong> Rua da Itália, 123, Cidade Italiana</li>
+<li><strong>Telefone:</strong> +55 39 4002-8922</li>
+<li><strong>E-mail:</strong> Anão@restaurante.com</li>
+</ul>
+</section>
+<section id="delivery">
+<h2>Pedidos Online/Entrega</h2>
+<p>Faça seu pedido online e desfrute da nossa comida no conforto da sua casa. Entrega disponível nas seguintes áreas:</p>
+<ul>
+<li>Cidade Italiana</li>
+<li>Bairro Italiano</li>
+</ul>
+<p>Horários estimados de entrega: 30-45 minutos.</p>
+</section>
+<section id="social">
+<h2>Redes Sociais</h2>
+<ul>
+<li><a href="https://www.instagram.com/gbzinn_808/" target="_blank">Instagram</a></li>
+</ul>
+</section>
+<div class="card">
+  <h3>Projeto 11</h3>
+  <p>Grid Layout</p>
+  <button><a href="https://jhonys351.github.io/Grid%20Layout.html">Acessar Projeto</a></button>            
+</div>
+
+</body>
+</html>
+
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #246d21;
+  color: #fff;
+  text-align: left;
+  padding: 20px 0;
+}
+
+header h1 {
+  font-size: 36px;
+}
+
+header p {
+  font-size: 18px;
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+  background-color: #333;
+  padding: 10px 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+section {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+section h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+
+form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+form input[type="submit"] {
+  background-color: #246d21;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.gallery {
+  text-align: center; 
+}
+
+.gallery img {
+  display: inline-block;
+  max-width: 30%;
+  height: auto;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+#social ul {
+  list-style: none;
+  padding: 0;
+}
+
+#social ul li {
+  margin: 10px 0;
+}
+
+#social ul li a {
+  text-decoration: none;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+#social ul li a:hover {
+  background-color: #2600ff;
+  color: rgb(255, 255, 255);
+}
+.cheff{height: 200px; }
+
+</style>
