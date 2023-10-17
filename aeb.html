@@ -1,113 +1,186 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Calculadora de Índice de Massa Corporal (IMC)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="utf-8" />
+  <title>Extrato Bancário</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    
+    h1 {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
 
-        h1 {
-            text-align: center;
-            background-color: #0074cc;
-            color: white;
-            padding: 10px;
-            margin-top: 0;
-        }
+    h2 {
+      color: #333;
+    }
 
-        .container {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
 
-        label {
-            font-weight: bold;
-            color: #333;
-        }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
 
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    label {
+      font-weight: bold;
+      margin-right: 10px;
+    }
 
-        .calcular-btn {
-            background-color: #0074cc;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            width: 100%;
-        }
+    select, input, button {
+      margin-bottom: 10px;
+      padding: 5px;
+    }
 
-        .calcular-btn:hover {
-            background-color: #0056a7;
-        }
+    button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
 
-        .resultado {
-            display: none;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    button:hover {
+      background-color: #555;
+    }
 
-        .imc-resultado {
-            font-size: 28px;
-            font-weight: bold;
-            color: #0074cc;
-        }
-    </style>
+    #resumo {
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    li {
+      margin-bottom: 10px;
+    }
+    
+    li span {
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <h1>Calculadora de IMC</h1>
+  <h1>Inserir Gastos</h1>
+  <label for="valor">Valor:</label>
+  <input type="number" id="valor" step="0.01" placeholder="Exemplo: 100.00" />
+  <label for="data">Data:</label>
+  <input type="date" id="data" />
+  <label for="categoria">Categoria:</label>
+  <select id="categoria">
+    <option value="mercado">Mercado</option>
+    <option value="transporte">Transporte</option>
+    <option value="contas">Contas</option>
+  </select>
+  <button id="adicionar" onclick="adicionarGasto()">Adicionar</button>
 
-    <div class="container">
-        <form class="calculadora">
-            <label for="peso">Peso (kg):</label>
-            <input type="number" id="peso" required placeholder="Insira seu peso (kg)" min="1">
-            <br>
+  <h1>Extrato Bancário</h1>
 
-            <label for="altura">Altura (m):</label>
-            <input type="number" id="altura" required placeholder="Insira sua altura (m)" min="1">
-            <br>
+  <h2>Mercado</h2>
+  <table id="tabelaMercado">
+    <thead>
+      <tr>
+        <th>Valor</th>
+        <th>Categoria</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
-            <button type="button" onclick="calcularIMC()" class="calcular-btn">Calcular IMC</button>
-        </form>
+  <h2>Transporte</h2>
+  <table id="tabelaTransporte">
+    <thead>
+      <tr>
+        <th>Valor</th>
+        <th>Categoria</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
-        <div class="resultado" id="resultado">
-            <h2>Resultado</h2>
-            <p>Seu IMC é: <span id="imc" class="imc-resultado">0.00</span></p>
-        </div>
-    </div>
+  <h2>Contas</h2>
+  <table id="tabelaContas">
+    <thead>
+      <tr>
+        <th>Valor</th>
+        <th>Categoria</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
-    <script>
-        function calcularIMC() {
-            var peso = parseFloat(document.getElementById("peso").value);
-            var altura = parseFloat(document.getElementById("altura").value);
+  <div id="resumo">
+    <h2>Resumo</h2>
+    <p><span>Total:</span> R$ <span id="total">0.00</span></p>
+    <p>Total por Mês:</p>
+    <ul id="totalPorMes"></ul>
+    <p>Total Gasto com Mercado, Transporte e Contas:</p>
+    <ul id="totalCategorias"></ul>
+  </div>
 
-            if (isNaN(peso) || isNaN(altura) || altura <= 0 || peso <= 0) {
-                alert("Por favor, insira valores válidos para peso e altura.");
-                return;
-            }
+  <button id="calcular" onclick="calcularResumo()">Calcular Resumo</button>
 
-            var imc = peso / (altura * altura);
-            var resultadoElement = document.getElementById("resultado");
-            var imcElement = document.getElementById("imc");
+  <script>
+    const totalPorMesArray = new Array(12).fill(0); 
+    const totalCategorias = { Mercado: 0, Transporte: 0, Contas: 0 }; 
+    function adicionarGasto() {
+      const categoria = document.getElementById("categoria").value;
+      const valor = parseFloat(document.getElementById("valor").value);
+      const data = document.getElementById("data").value;
 
-            imcElement.textContent = imc.toFixed(2);
-            resultadoElement.style.display = "block";
-        }
-    </script>
+      if (isNaN(valor)) {
+        alert("Por favor, insira um valor válido.");
+        return;
+      }
+
+      const tabela = document.getElementById("tabela" + categoria.charAt(0).toUpperCase() + categoria.slice(1)).getElementsByTagName('tbody')[0];
+      const newRow = tabela.insertRow(tabela.rows.length);
+      const cell1 = newRow.insertCell(0);
+      const cell2 = newRow.insertCell(1);
+      const cell3 = newRow.insertCell(2);
+      cell1.innerHTML = valor.toFixed(2);
+      cell2.innerHTML = categoria;
+      cell3.innerHTML = data;
+      document.getElementById("valor").value = "";
+      document.getElementById("data").value = "";
+
+      totalPorMesArray[new Date(data).getMonth()] += valor;
+      totalCategorias[categoria] += valor;
+      atualizarResumo();
+    }
+
+    function calcularResumo() {
+      const categorias = ["Mercado", "Transporte", "Contas"];
+      const totalPorMes = totalPorMesArray.map((total, index) => {
+        return `Mês ${index + 1}: R$ ${total.toFixed(2)}`;
+      });
+      const totalCategoriasList = categorias.map((categoria) => {
+        return `${categoria}: R$ ${totalCategorias[categoria].toFixed(2)}`;
+      });
+
+      const resumoTotal = totalPorMes.concat(totalCategoriasList);
+
+      alert(`Resumo:\n${resumoTotal.join('\n')}`);
+    }
+
+    function atualizarResumo() {
+      const totalGeral = totalPorMesArray.reduce((total, valor) => total + valor, 0).toFixed(2);
+
+      document.getElementById("total").textContent = totalGeral;
+    }
+  </script>
 </body>
 </html>
